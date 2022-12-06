@@ -13,26 +13,34 @@ int main()
 	Station.push_front("1970”N\n");
 	for (std::list < const char* > ::iterator itr = Station.begin(); itr != Station.end(); ++itr)
 	{
-		if (*itr == "Nippori")
+		std::cout << *itr << " ";
+	}
+	for (std::list < const char* > ::iterator itr = Station.begin(); itr != Station.end(); ++itr)
+	{
+		if (strcmp(*itr, "Nippori") == 0)
 		{
 			itr = Station.insert(itr, "Nishi - Nippori");
 			++itr;
 		}
-		std::cout << *itr << " ";
 	}
+
 	printf("----------------------------\n");
 
 	Station.pop_front();
 	Station.push_front("2019”N\n");
 	for (std::list < const char* > ::iterator itr = Station.begin(); itr != Station.end(); ++itr)
 	{
-		if (*itr == "Shinagawa")
+		std::cout << *itr << " ";
+	}
+	for (std::list < const char* > ::iterator itr = Station.begin(); itr != Station.end(); ++itr)
+	{
+		if (strcmp(*itr, "Shinagawa") == 0)
 		{
 			itr = Station.insert(itr, "Takanawa-Gateway");
 			++itr;
 		}
-		std::cout << *itr << " ";
 	}
+
 	printf("----------------------------\n");
 
 	Station.pop_front();
