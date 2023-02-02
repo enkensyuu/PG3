@@ -1,7 +1,5 @@
 #include "DxLib.h"
 #include "Enemy.h"
-#include <iostream>
-using namespace std;
 
 // ウィンドウのタイトルに表示する文字列
 const char TITLE[] = "xx2x_xx_ナマエ: タイトル";
@@ -12,10 +10,8 @@ const int WIN_WIDTH = 600;
 // ウィンドウ縦幅
 const int WIN_HEIGHT = 400;
 
-bool Enemy::DethFlag;
-
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine,
-	_In_ int nCmdShow) {
+                   _In_ int nCmdShow) {
 	// ウィンドウモードに設定
 	ChangeWindowMode(TRUE);
 
@@ -45,24 +41,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 	// ゲームループで使う変数の宣言
-	Enemy* enemy1 = new Enemy;
-	Enemy* enemy2 = new Enemy;
-	Enemy* enemy3 = new Enemy;
-
-	cout << Enemy::DethFlag << endl;
-
-	delete enemy1;
-
-	cout << Enemy::DethFlag << endl;
-	delete enemy2;
-	delete enemy3;
-	cout << Enemy::DethFlag << endl;
+	Enemy* enemy = new Enemy;
 
 	// 最新のキーボード情報用
-	char keys[256] = { 0 };
+	char keys[256] = {0};
 
 	// 1ループ(フレーム)前のキーボード情報
-	char oldkeys[256] = { 0 };
+	char oldkeys[256] = {0};
 
 	// ゲームループ
 	while (true) {
@@ -80,24 +65,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		if (keys[KEY_INPUT_SPACE] == 1 && oldkeys[KEY_INPUT_SPACE] == 0)
-		{
-			enemy1->DethFlag = true;
-		}
+		enemy->Update();
 
 		// 描画処理
-		if (!enemy1->DethFlag)
-		{
-			DrawBox(0, 0, 60, 60, GetColor(255, 0, 0), true);
-		}
-		if (!enemy2->DethFlag)
-		{
-			DrawBox(120, 0, 180, 60, GetColor(255, 0, 0), true);
-		}
-		if (!enemy3->DethFlag)
-		{
-			DrawBox(240, 0, 300, 60, GetColor(255, 0, 0), true);
-		}
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
