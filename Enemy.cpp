@@ -26,14 +26,14 @@ void (Enemy::* Enemy::spEnemyTable[])()
 void Enemy::Update()
 {
 	timer--;
-	(this->*spEnemyTable[0])();
+	(this->*spEnemyTable[phase_])();
 	if (timer <= 0)
 	{
-		(this->*spEnemyTable[1])();
+		phase_ = 1;
 		timer2--;
 	}
 	if (timer2 <= 0)
 	{
-		(this->*spEnemyTable[2])();
+		phase_ = 2;
 	}
 }

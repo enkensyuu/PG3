@@ -2,6 +2,8 @@
 class Enemy
 {
 public:
+	Enemy() { phase_ = 0; }
+	~Enemy() {};
 	/// <summary>
 	/// Ú‹ß
 	/// </summary>
@@ -24,5 +26,6 @@ private:
 
 	int timer = 300;
 	int timer2 = 300;
+	int phase_;
 };
 
